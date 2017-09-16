@@ -1,0 +1,10 @@
+{% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
+<ul>
+     {% for Question in question_list %}
+        <li>{{Question.question_title}} - <a href="/question/{{Question.id}}/delete/">Delete</a></li>
+     {% endfor %}
+</ul>
+
+<a href="/admin">Django Admin</a>
+

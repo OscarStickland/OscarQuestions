@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="jumbotron text-center">
+        <h1>Oscar's Questions</h1>
+        <p>The Question Power House!</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <p><strong>Latest Questions</strong></p>
+                <ul>
+                   {% for Question in question_list %}
+                        <li><a href="/question/{{Question.id}}/">{{ Question.question_title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <p>Ready to ask, have a problem? Why not ask a Question?</p>
+                <p><a href="/question/ask/">Ask a Question!</a></p>
+                <br>
+                <p><a href="/question/admin/">Admin</a></p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
