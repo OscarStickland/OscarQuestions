@@ -11,3 +11,9 @@ class AskForm(forms.Form):
 class LoginForm(forms.Form):
     Username = forms.CharField(label='Username', max_length=100)
     Password = forms.CharField(label='Password', max_length=1000)
+
+class newUserForm(forms.Form):
+    Username = forms.CharField(label='Username', max_length=100)
+    Password = forms.CharField(label='Password', max_length=100)
+    FirstName = forms.CharField(label='FirstName', max_length=100)
+    LastName = forms.CharField(label='LastName', max_length=100)

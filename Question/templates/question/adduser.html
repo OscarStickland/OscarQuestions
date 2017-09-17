@@ -1,0 +1,21 @@
+<h1>New User</h1>
+
+<form method="post"> 
+    {% csrf_token %}
+    <p>Username</p>
+    {{ form.Username }}
+    <br>
+
+    <p>Password</p>
+    {{ form.Password }}
+    <br>
+
+    <p>First Name</p> 
+    {{ form.FirstName }}
+    <br>
+    
+    <p>Last Name</p> 
+    {{ form.LastName }}
+    <br>
+    <button type="submit">Add the user</button>
+</form>

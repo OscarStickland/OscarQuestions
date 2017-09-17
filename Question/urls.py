@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^question/$', views.index),
     url(r'^question/login/$', login, {'template_name' : 'question/login.html'}),
     url(r'^question/logout/$', logout, {'template_name' : 'question/logout.html'}),
+    url(r'^question/adduser/$', views.addUser),
 
 ]
