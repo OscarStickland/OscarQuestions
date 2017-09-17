@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Question, Answer, AdminUser
+from .models import Question, Answer
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import AnswerForm, AskForm, LoginForm
 from django.utils import timezone
@@ -41,6 +41,8 @@ def ask(request):
     return render(request, 'question/ask.html', context)
 
 def admin(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/question/login')
     question_list = Question.objects.all()
 
     context = {'question_list': question_list}
@@ -88,30 +90,3 @@ def question(request, question_id):
 
     return render(request, 'question/question.html', context)
 
-def login(request):
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = LoginForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            username = form.cleaned_data['Username']
-            password = form.cleaned_data['Password']
-
-            try:
-                real_username = AdminUser.objects.filter(Username=username)
-                real_password = AdminUser.objects.filter(Password=password)
-            except:
-                return HttpResponse('Your username is wrong')
-
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = LoginForm()
-
-    context = {'form': form,
-               }
-
-    return render(request, 'question/login.html', context)

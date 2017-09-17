@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Answer, AdminUser
+from .models import Question, Answer
 
 
 class AnswerAdmin(admin.ModelAdmin):
@@ -7,5 +7,4 @@ class AnswerAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Question)
-admin.site.register(AdminUser)
 admin.site.register(Answer, AnswerAdmin)
