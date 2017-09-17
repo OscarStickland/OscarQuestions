@@ -1,4 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
 {% if message %}<p><strong>{{ message }}</strong></p>{% endif %}
+
 
 <ul>
      {% for Question in question_list %}
@@ -8,4 +15,5 @@
 
 <a href="/admin">Django Admin</a> <br>
 <a href='/question/logout/'>Logout</a>
+{% endblock content %}
 

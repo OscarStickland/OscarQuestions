@@ -42,13 +42,16 @@ def ask(request):
 
 def admin(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect('/question/login')
+        return HttpResponseRedirect('/question/login/')
     question_list = Question.objects.all()
 
     context = {'question_list': question_list}
     return render(request, 'question/admin.html', context)
 
 def delete(request, question_id):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/question/login/')
+    
     if(get_object_or_404(Question, id=question_id) == False):
         return HttpResponseRedirect(reverse('question:admin', args=()))
 
