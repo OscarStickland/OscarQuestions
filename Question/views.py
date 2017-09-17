@@ -24,8 +24,9 @@ def ask(request):
             # redirect to a new URL:
             question_title = form.cleaned_data['QuestionTitle']
             question_text = form.cleaned_data['QuestionText']
+            username_text = form.cleaned_data['UserText']
 
-            query = Question(question_title=str(question_title), question_text=str(question_text), pub_date=timezone.now())
+            query = Question(question_title=str(question_title), question_text=str(question_text), user_name=username_text, pub_date=timezone.now())
             query.save()
 
             return HttpResponse('Thanks')

@@ -5,7 +5,7 @@ from django.utils import timezone
 class Question(models.Model):
     question_title = models.CharField(max_length=200)
     question_text = models.CharField(max_length=1000)
-    user_name = models.CharField(max_length=100, null=True)
+    user_name = models.CharField(max_length=100)
     pub_date = models.DateField('date published')
 
     def __str__(self):
