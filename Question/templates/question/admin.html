@@ -12,7 +12,8 @@
          </div>
         <ul class="nav navbar-nav">
             <li><a href="/question/ask">Ask</a></li>
-            <li><a href="/question/admin">Admin</a></li> 
+            <li><a href="/question/admin">Admin</a></li>
+            <li><a href="/question/adduser/">New User</a></li>  
             <li><a href="/admin">Django Admin</a></li>           
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -26,9 +27,10 @@
 
 <ul>
      {% for Question in question_list %}
-        <li>{{Question.question_title}} - <a href="/question/{{Question.id}}/delete/">Delete</a></li>
+        <li>{{Question.question_title}} - <a href='/question/{{Question.id}}/'>View</a> - <a href="/question/{{Question.id}}/delete/">Delete</a></li>
      {% endfor %}
 </ul>
+
 
 
 

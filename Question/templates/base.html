@@ -23,8 +23,15 @@
                   <ul class="nav navbar-nav">
                     <li><a href="/question/ask">Ask</a></li>
                     <li><a href="/question/admin">Admin</a></li>
-                    
                   </ul>
+
+                  {% if request.user.is_authenticated %}
+                  <ul class="nav navbar-nav navbar-right">
+                        <li><a href="">Welcome {{ request.user.first_name }} {{ request.user.last_name }}</a></li>
+                        <li><a href="/question/logout/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                    {% endif %}
+               
                 </div>
              </nav>
     {% block content %}{% endblock content %}

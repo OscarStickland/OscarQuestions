@@ -48,6 +48,9 @@ def index(request):
 
 def ask(request):
     
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/question/login/')
+
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -59,9 +62,9 @@ def ask(request):
             # redirect to a new URL:
             question_title = form.cleaned_data['QuestionTitle']
             question_text = form.cleaned_data['QuestionText']
-            username_text = form.cleaned_data['UserText']
 
-            query = Question(question_title=str(question_title), question_text=str(question_text), user_name=username_text, pub_date=timezone.now())
+
+            query = Question(question_title=str(question_title), question_text=str(question_text), user_name=request.user.username, pub_date=timezone.now())
             query.save()
 
             return HttpResponse('Thanks')
@@ -79,6 +82,9 @@ def ask(request):
 def admin(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/question/login/')
+
+    if 'admin' not in request.user.username:
+        return HttpResponse("You are not allowed to view this page. <a href='/question/logout/'>Logout here <a> or <a href='/'>Go to the home page</a>")
     question_list = Question.objects.all()
 
     context = {'question_list': question_list}

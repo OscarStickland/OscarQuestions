@@ -6,7 +6,7 @@ class AnswerForm(forms.Form):
 class AskForm(forms.Form):
     QuestionTitle = forms.CharField(label='Title', max_length=100)
     QuestionText = forms.CharField(label='Question', max_length=1000)
-    UserText = forms.CharField(label='Username', max_length=100)
+
 
 class LoginForm(forms.Form):
     Username = forms.CharField(label='Username', max_length=100)
